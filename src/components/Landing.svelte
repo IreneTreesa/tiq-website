@@ -1,10 +1,15 @@
 <script>
+	import Footer from "./footer.svelte";
+import Sponsors from "./sponsors.svelte";
+
 	function scrollToTop() {
 		window.scroll({ top: 0, behavior: 'smooth' });
 	}
 	let tabs = $state([
 		{ name: 'About Us', link: '/about' },
-		{ name: 'Contact Us', link: '/contact' }
+		{ name: 'Contact Us', link: '/contact' },
+		{ name: 'Gallery', link: '/gallery' },
+		{ name: 'Register', link: '/register' }
 	]);
 </script>
 
@@ -24,35 +29,50 @@
 						<a class="text-[#F8F3E2] px-7 font-light" href={tab.link}>{tab.name}</a>
 					{/each}
 
-					<a
-						href="https://forms.gle/exampleGoogleFormLink"
-						target="_blank"
-						rel="noopener noreferrer"
-						class="ml-auto mr-auto mt-7 text-xl text-center blueShadow relative overflow-hidden px-5 py-2 group rounded-full bg-[#70B5F4] hover:bg-[#f2b94f] transition-all duration-300"
-
-						>
-						Register Now
-					</a>
+					
 
 				</div>
 			</header>
 			<div>
 				<!--Home page Heading-->
 				<h1
-					class="relative text-[#70B5F4] text-left mt-20 ml-30 font-[merriweather] text-8xl leading-tight z-10"
+					class="relative text-[#70B5F4] text-center mt-15 ml-10 font-[merriweather] text-4xl md:text-6xl lg:text-8xl
+ leading-tight z-10"
 					>
-					<span class="block">THE</span>
-					<span class="block">ILLUMINATI</span>
-					<span class="block">QUIZ 2025</span>
+					<span class="block">THE </span>
+					<span class="block">ILLUMINATI QUIZ </span>
+					<span class="block"> </span>
+					<span class="block"> 2026</span>
 				</h1>
 
 
 				<h1
 					class="relative text-[#AACCCE]
-                text-2xl mt-10 ml-30 italic"
+                text-2xl mt-10 ml-110 italic"
 				>
 					In memory of Sandeep Menon
 				</h1>
+
+				<!-- Event Info Section -->
+<div class="mt-10 text-center text-white flex flex-col items-center gap-4">
+    
+
+    <p class="text-lg font-light tracking-wide">
+        📅 Date: <span class="font-semibold text-[#AACCCE]"> 3 Jan 2026</span>
+    </p>
+
+    
+
+    <a
+        href="/register"
+        class="mt-1 text-xl text-center blueShadow relative overflow-hidden px-7 py-3 group rounded-full bg-[#70B5F4] hover:bg-[#f2b94f] transition-all duration-300"
+    >
+        Register Now
+    </a>
+</div>
+
+
+
 			</div>
 		</div>
 		<img
@@ -138,6 +158,8 @@
 	</div>
 </div>
 
+<Sponsors/>
+
 <div
 	
 class="flex flex-col relative bg-gradient-to-tr from-[#020912] via-[#0b1320] to-[#101a2a]
@@ -158,7 +180,7 @@ class="flex flex-col relative bg-gradient-to-tr from-[#020912] via-[#0b1320] to-
 	
 
 	<a
-			href="https://forms.gle/exampleGoogleFormLink"
+			href="/register"
 			target="_blank"
 			rel="noopener noreferrer"
 			class="ml-auto mr-auto mt-7 text-xl text-center blueShadow relative overflow-hidden px-5 py-2 group rounded-full bg-[#70B5F4] hover:bg-[#f2b94f] transition-all duration-300"
@@ -170,6 +192,7 @@ class="flex flex-col relative bg-gradient-to-tr from-[#020912] via-[#0b1320] to-
 		** Registration fees ₹100/Team. Free for School Students
 	</h1>
 </div>
+
 <button
 	on:click={scrollToTop}
 	class="cursor-pointer fixed bottom-10 right-10 bg-[#70B5F4] rounded-full p-3"
