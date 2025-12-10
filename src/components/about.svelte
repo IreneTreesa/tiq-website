@@ -1,17 +1,14 @@
 <script>
+	import Menu from '../components/Menu.svelte';
 	import { page } from '$app/stores';
 
 	function scrollToTop() {
 		window.scrollTo({ top: 0, behavior: 'smooth' });
 	}
 
-	let tabs = $state([
-		{ name: 'About Us', link: '/about' },
-		{ name: 'Contact Us', link: '/contact' },
-		{ name: 'Gallery', link: '/gallery' },
-		{ name: 'Register', link: '/register' }
-	]);
 	let scrollRef;
+
+	
 
 	function scrollLeft() {
 		if (!scrollRef) return;
@@ -24,30 +21,11 @@
 	}
 </script>
 
+<!-- Replace old navbar with this -->
+<Menu />
+
 <!-- Dark blue bg-->
 <div class="flex flex-col relative bg-gradient-to-tr from-[#020912] via-[#0b1320] to-[#101a2a]">
-	<!-- Navbar -->
-	<div class="flex overflow-hidden flex-wrap">
-		<div class="flex flex-col flex-1">
-			<header class="top-0 flex flex-row mt-2 font-Nunito-Sans z-10 px-4 sm:px-6 md:px-10 lg:pl-27">
-				<a href="/">
-					<img class="w-16 sm:w-20 h-auto -translate-y-1 sm:-translate-y-3.5" src="../src/media/favicon.svg" alt="tiq" />
-				</a>
-				<div class="py-3.5 ml-auto text-base sm:text-xl flex flex-wrap gap-2">
-					{#each tabs as tab}
-						<a
-							href={tab.link}
-							class="text-[#F8F3E2] px-3 sm:px-7 py-1 font-light 
-							{$page.url.pathname === tab.link ? 'underline underline-offset-4 font-extrabold' : ''}
-							hover:text-[#70B5F4] transition"
-						>
-							{tab.name}
-						</a>
-					{/each}
-				</div>
-			</header>
-		</div>
-	</div>
 
 	<!-- About TIQ -->
 	<div class="flex flex-col lg:flex-row items-start mt-10 px-4 sm:px-10 lg:mx-20 gap-6">
@@ -67,7 +45,12 @@
 				prize money but also for providing a convivial quizzing experience.
 			</p>
 		</div>
-		<img class="w-full sm:w-64 lg:w-96 mt-6 lg:mt-0" src="/src/media/tiq_lightblue.png" alt="tiqlogo" />
+		<img 
+  class="w-40 sm:w-52 lg:w-96 mx-auto lg:mx-0 mt-6 lg:mt-0"
+  src="/src/media/tiq_lightblue.png" 
+  alt="tiqlogo" 
+/>
+
 	</div>
 </div>
 
@@ -91,7 +74,12 @@
 <!-- Govt Model Engineering College -->
 <div class="flex flex-col relative bg-gradient-to-tr from-[#020912] via-[#0b1320] to-[#101a2a] px-4 sm:px-10 lg:px-20 py-10 lg:py-20 gap-8">
 	<div class="flex flex-col lg:flex-row items-center gap-6">
-		<img src="/src/media/college.png" alt="college" class="w-full sm:w-64 lg:w-100 h-auto" />
+		<img 
+  src="/src/media/college.png" 
+  alt="college" 
+  class="w-48 sm:w-64 lg:w-[28rem] mx-auto lg:mx-0 h-auto"
+/>
+
 		<h1 class="text-3xl sm:text-4xl lg:text-6xl text-[#70B5F4] font-light font-[merriweather] text-center lg:text-left">
 			Govt. Model <br />Engineering College
 		</h1>
@@ -124,7 +112,6 @@
 	</h1>
 
 	<div class="flex justify-center items-center gap-4 sm:gap-6">
-		<!-- LEFT ARROW -->
 		<button 
 			on:click={scrollLeft}
 			class="text-[#70B5F4] text-2xl sm:text-3xl cursor-pointer select-none hover:scale-110 transition"
@@ -132,12 +119,11 @@
 			‹
 		</button>
 
-		<!-- SCROLLABLE TEAM LIST -->
 		<div 
 			bind:this={scrollRef}
 			class="flex gap-4 sm:gap-8 overflow-x-auto px-2 sm:px-4 scroll-smooth no-scrollbar max-w-[80vw]"
 		>
-			<!-- Card 1 -->
+			<!-- Cards (unchanged) -->
 			<div class="bg-[#0d1828] flex-shrink-0 rounded-xl p-4 sm:p-6 w-40 sm:w-56 h-60 sm:h-72 flex flex-col justify-center items-center border border-[#1a2a40]">
 				<div class="h-24 sm:h-32 w-24 sm:w-32 bg-[#163152] rounded-lg mb-2 sm:mb-4"></div>
 				<h2 class="text-white text-lg sm:text-xl font-light">Lead</h2>
@@ -162,11 +148,8 @@
 				<div class="h-24 sm:h-32 w-24 sm:w-32 bg-[#163152] rounded-lg mb-2 sm:mb-4"></div>
 				<h2 class="text-white text-lg sm:text-xl font-light">Lead</h2>
 			</div>
-
-			<!-- Repeat cards as before -->
 		</div>
 
-		<!-- RIGHT ARROW -->
 		<button 
 			on:click={scrollRight}
 			class="text-[#70B5F4] text-2xl sm:text-3xl cursor-pointer select-none hover:scale-110 transition"
@@ -176,24 +159,12 @@
 	</div>
 </div>
 
-<!-- Scroll to top button -->
+<!-- Scroll to top -->
 <button
 	on:click={scrollToTop}
 	class="cursor-pointer fixed bottom-5 sm:bottom-10 right-5 sm:right-10 bg-[#70B5F4] rounded-full p-3"
 >
-	<svg
-		xmlns="http://www.w3.org/2000/svg"
-		fill="none"
-		viewBox="0 0 24 24"
-		stroke-width="1.5"
-		stroke="currentColor"
-		class="w-6 h-6 text-white"
-	>
-		<path
-			stroke-linecap="round"
-			stroke-linejoin="round"
-			d="M8.25 6.75 12 3m0 0 3.75 3.75M12 3v18"
-		/>
+	<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-white">
+		<path stroke-linecap="round" stroke-linejoin="round" d="M8.25 6.75 12 3m0 0 3.75 3.75M12 3v18"/>
 	</svg>
 </button>
-
